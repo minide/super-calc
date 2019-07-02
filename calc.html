@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <style>
+           body{
+            width: 80%;
+              margin: 50px auto;
+                }
+
+            .flex{
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .flex-col{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around
+            }
+            .inputs > input{
+                margin: 5px 0;
+                width: 50px;
+                border-radius: 5px;
+
+            }
+            .border-pink{
+                margin: 5px;
+                border: 1px solid pink;
+            }
+
+            .calc-buttons button{
+                width: 25px;
+                height: 25px;
+                background: violet;
+                border: 1px solid purple;
+                margin: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>calculator</h1>
+
+        <div class="content flex-col">
+
+            <div class="3-boxes border-pink flex">
+                <div class="inputs flex-col">
+                    <input class="border-pink" id="n1"/>
+                    <input class="border-pink" id="n2"/>
+                </div>
+                <div class="calc-buttons flex-col">
+                    <div class="flex">
+                        <button>+</button>
+                        <button>-</button>
+                    </div>    
+                    <div class="flex">
+                        <button>*</button>
+                        <button>/</button>
+                    </div>    
+
+                    
+
+                </div>
+                <div class="results flex-col">
+                    res
+                </div>
+            </div>
+            <div class="table-wrraper border-pink">table</div>
+       
+        </div>
+        
+        <script>
+        
+           
+
+
+            let btns = document.querySelectorAll('.calc-buttons button')
+
+            let aritmeticFn = e => {
+                let aritmetic = e.target.textContent
+                let n1 = Number (document.querySelector('#n1').value)
+                let n2 = Number (document.querySelector('#n2').value)
+
+                let setRes = r => 
+                document.querySelector(' .results').innerHTML = r;
+
+                switch (aritmetic){
+                    case '+': setRes(n1+n2); break;
+                    case '-': setRes(n1-n2); break;
+                    case '*': setRes(n1*n2); break;
+                    case '/': setRes(n1/n2); break;
+                }
+
+                let ex = n1 + aritmetic + n2;
+                let row = `
+                <div class="row">
+                <span>${ex}</span>
+                <button onclick="edit(event)">edit</button>
+                <button>delete</button>
+                </div>`
+
+                let t = document.querySelector('.table')
+                t. innerHTML += row;     
+            }
+
+                function edit(e) {
+                    let row = e.target.parentNode
+                    console.log('edit', e.target,row)
+                    let s = row.querySelector('span')
+                    let ex = s.textContent
+                    s.innerHTML = `<input value="${ex}" />`      
+                             }   
+
+            
+
+            btns.forEach( btn => 
+                btn.onclick = aritmeticFn
+            )
+
+            
+
+        </script>
+    </body>
+</html>
