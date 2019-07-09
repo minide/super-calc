@@ -24,7 +24,7 @@
             }
             .border-pink{
                 margin: 5px;
-                border: 1px solid pink;
+                border: 1px solid blue;
             }
 
             .calc-buttons button{
@@ -50,13 +50,13 @@
                     <div class="flex">
                         <button>+</button>
                         <button>-</button>
-                    </div>    
+                    </div>
                     <div class="flex">
                         <button>*</button>
                         <button>/</button>
-                    </div>    
+                    </div>
 
-                    
+
 
                 </div>
                 <div class="results flex-col">
@@ -64,12 +64,12 @@
                 </div>
             </div>
             <div class="table-wrraper border-pink">table</div>
-       
+
         </div>
-        
+
         <script>
-        
-           
+
+
 
 
             let btns = document.querySelectorAll('.calc-buttons button')
@@ -79,7 +79,7 @@
                 let n1 = Number (document.querySelector('#n1').value)
                 let n2 = Number (document.querySelector('#n2').value)
 
-                let setRes = r => 
+                let setRes = r =>
                 document.querySelector(' .results').innerHTML = r;
 
                 switch (aritmetic){
@@ -98,7 +98,7 @@
                 </div>`
 
                 let t = document.querySelector('.table')
-                t. innerHTML += row;     
+                t. innerHTML += row;
             }
 
                 function edit(e) {
@@ -106,16 +106,16 @@
                     console.log('edit', e.target,row)
                     let s = row.querySelector('span')
                     let ex = s.textContent
-                    s.innerHTML = `<input value="${ex}" />`      
-                             }   
+                    s.innerHTML = `<input value="${ex}" />`
+                             }
 
-            
 
-            btns.forEach( btn => 
+
+            btns.forEach( btn =>
                 btn.onclick = aritmeticFn
             )
 
-            
+
 
         </script>
     </body>
